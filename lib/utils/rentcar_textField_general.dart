@@ -1,28 +1,25 @@
 import 'package:flutter/material.dart';
 
 class RentCarTextFieldGeneral extends StatelessWidget {
-
   final TextEditingController textController;
   final String hintText;
   final String labelText;
   final Icon prefixIcon;
   final Function validator;
 
-  const RentCarTextFieldGeneral(
-      {
-        @required this.textController,
-        @required this.hintText,
-        @required this.labelText,
-        @required this.prefixIcon,
-        @required this.validator, icon,
-      });
-
+  const RentCarTextFieldGeneral({
+    @required this.textController,
+    @required this.hintText,
+    @required this.labelText,
+    @required this.prefixIcon,
+    @required this.validator,
+    icon,
+  });
 
   @override
-  Widget build(BuildContext context) =>
-      Container(
+  Widget build(BuildContext context) => Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(
+          borderRadius: const BorderRadius.all(
             Radius.circular(20),
           ),
           color: Colors.white,
@@ -31,14 +28,14 @@ class RentCarTextFieldGeneral extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(left: 10.0),
           child: TextFormField(
-            controller:textController,
+            controller: textController,
             maxLength: 80,
             maxLines: 1,
             autofocus: false,
             keyboardType: TextInputType.text,
             decoration: InputDecoration(
               hintText: hintText,
-              prefixIcon:prefixIcon,
+              prefixIcon: prefixIcon,
               border: InputBorder.none,
               counterText: '',
               labelText: labelText,

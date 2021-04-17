@@ -14,9 +14,20 @@ class RentCarBttonGeneral extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => RaisedButton(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(20),
+          ),
+        ),
+        color: color,
         onPressed: onTap,
+        elevation: 5,
         child: Text(
           (title),
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 17,
+          ),
         ),
       );
 }

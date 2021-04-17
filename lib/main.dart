@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rent_car_app/ui/login/login_screen.dart';
+import 'package:rent_car_app/ui/registrer/registrer_screen.dart';
 
 //Screens
 import 'package:rent_car_app/ui/splash/splash_screen.dart';
@@ -44,6 +45,11 @@ class _MyAppState extends State<MyApp> {
             return this._slideTransition(
               settings: settings,
               pageBuilder: (context, _, __) => LoginScreen(),
+            );
+          case RentCarRoutes.REGISTRER_SCREEN:
+            return this._slideTransition(
+              settings: settings,
+              pageBuilder: (context, _, __) => RegistrerScreen(),
             );
           default:
             throw Exception('Ruta Invalida');
