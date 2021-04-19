@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     children: <Widget>[
                       Container(
-                        height: size.height * 0.4,
+                        height: size.height * 0.3,
                         decoration: BoxDecoration(
                             gradient: RentcarColors.VERTICAL_GRADIENT,
                             borderRadius: BorderRadius.only(
@@ -44,6 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             )),
                         child: this._buildLogo(),
                       ),
+                      this._buildSpace(),
                       this._buildForm(),
                     ],
                   ),
@@ -135,7 +136,9 @@ class _LoginScreenState extends State<LoginScreen> {
       );
 
   Widget _buildEnterButton() => RentCarBttonGeneral(
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, RentCarRoutes.HOME_SCREEN);
+        },
         title: 'Iniciar Sesion',
       );
 

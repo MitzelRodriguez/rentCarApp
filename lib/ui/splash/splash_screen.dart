@@ -46,7 +46,9 @@ class _SplashScreenState extends State<SplashScreen>
     Future.delayed(
       Duration(seconds: 3),
       () async {
-        this._goToScreen(route: RentCarRoutes.LOGIN_SCREEN);
+        this._goToScreen(
+          route: RentCarRoutes.LOGIN_SCREEN,
+        );
       },
     );
   }

@@ -35,7 +35,7 @@ class _RegistrerScreenState extends State<RegistrerScreen> {
                   child: Column(
                     children: <Widget>[
                       Container(
-                        height: size.height * 0.4,
+                        height: size.height * 0.3,
                         decoration: BoxDecoration(
                           gradient: RentcarColors.VERTICAL_GRADIENT,
                           borderRadius: BorderRadius.only(
@@ -67,7 +67,12 @@ class _RegistrerScreenState extends State<RegistrerScreen> {
 
   Widget _buildForm() => Expanded(
         child: Container(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.only(
+            left: 20,
+            right: 20,
+            top: 20,
+            bottom: 40,
+          ),
           child: Form(
             key: this._formGlobalKey,
             child: Column(

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:rent_car_app/ui/login/login_screen.dart';
-import 'package:rent_car_app/ui/registrer/registrer_screen.dart';
+import 'package:rent_car_app/ui/cars/cars_screen.dart';
 
 //Screens
 import 'package:rent_car_app/ui/splash/splash_screen.dart';
+import 'package:rent_car_app/ui/home/home_screen.dart';
+import 'package:rent_car_app/ui/login/login_screen.dart';
+import 'package:rent_car_app/ui/registrer/registrer_screen.dart';
 
 //Routes
 import 'package:rent_car_app/utils/rentcar_rutes.dart';
@@ -51,6 +53,16 @@ class _MyAppState extends State<MyApp> {
               settings: settings,
               pageBuilder: (context, _, __) => RegistrerScreen(),
             );
+          case RentCarRoutes.HOME_SCREEN:
+            return this._slideTransition(
+              settings: settings,
+              pageBuilder: (context, _, __) => HomeScreen(),
+            );
+          case RentCarRoutes.CARS_SCREEN:
+            return this._fadeTransition(
+              settings: settings,
+              pageBuilder: (context, _, __) => CarsScreen(),
+            );
           default:
             throw Exception('Ruta Invalida');
         }
@@ -78,31 +90,6 @@ class _MyAppState extends State<MyApp> {
         ),
       );
 
-  PageRouteBuilder _modalTransition({
-    @required RouteSettings settings,
-    @required
-        Widget Function(BuildContext, Animation<double>, Animation<double>)
-            pageBuilder,
-    bool opaque = false,
-  }) =>
-      PageRouteBuilder(
-        opaque: opaque,
-        pageBuilder: pageBuilder,
-        settings: settings,
-        transitionsBuilder: (_, animation, __, child) {
-          final tween = Tween(
-            begin: const Offset(0.0, 1.0),
-            end: Offset.zero,
-          ).chain(
-            CurveTween(curve: Curves.ease),
-          );
-          return SlideTransition(
-            position: animation.drive(tween),
-            child: child,
-          );
-        },
-      );
-
   PageRouteBuilder _fadeTransition({
     @required RouteSettings settings,
     @required
@@ -128,4 +115,31 @@ class _MyAppState extends State<MyApp> {
           );
         },
       );
+/*
+  PageRouteBuilder _modalTransition({
+    @required RouteSettings settings,
+    @required
+        Widget Function(BuildContext, Animation<double>, Animation<double>)
+            pageBuilder,
+    bool opaque = false,
+  }) =>
+      PageRouteBuilder(
+        opaque: opaque,
+        pageBuilder: pageBuilder,
+        settings: settings,
+        transitionsBuilder: (_, animation, __, child) {
+          final tween = Tween(
+            begin: const Offset(0.0, 1.0),
+            end: Offset.zero,
+          ).chain(
+            CurveTween(curve: Curves.ease),
+          );
+          return SlideTransition(
+            position: animation.drive(tween),
+            child: child,
+          );
+        },
+      );
+  */
+
 }

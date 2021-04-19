@@ -4,5 +4,5 @@ class RentCarRoutes {
   static const String HOME_SCREEN = 'home_screen';
   static const String REGISTRER_SCREEN = 'registrer_screen';
   static const String PROFILE_SCREEN = 'profile_screen';
-
+  static const String CARS_SCREEN = 'cars_screen';
 }
