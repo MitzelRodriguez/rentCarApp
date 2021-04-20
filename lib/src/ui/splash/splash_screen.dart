@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:rent_car_app/utils/rentcar_colors.dart';
-import 'package:rent_car_app/utils/rentcar_rutes.dart';
+
+//SCREENS
+import 'package:rent_car_app/src/utils/rentcar_colors.dart';
+import 'package:rent_car_app/src/utils/rentcar_rutes.dart';
 
 class SplashScreen extends StatefulWidget {
   @override

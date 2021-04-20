@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:rent_car_app/ui/cars/cars_screen.dart';
 
-//Screens
-import 'package:rent_car_app/ui/splash/splash_screen.dart';
-import 'package:rent_car_app/ui/home/home_screen.dart';
-import 'package:rent_car_app/ui/login/login_screen.dart';
-import 'package:rent_car_app/ui/registrer/registrer_screen.dart';
+//SCREENS
+import 'package:rent_car_app/src/ui/cars/list_screen.dart';
+import 'package:rent_car_app/src/ui/login/login_screen.dart';
+import 'package:rent_car_app/src/ui/registrer/registrer_screen.dart';
+import 'package:rent_car_app/src/ui/splash/splash_screen.dart';
 
-//Routes
-import 'package:rent_car_app/utils/rentcar_rutes.dart';
+//UTILS
+import 'package:rent_car_app/src/utils/rentcar_rutes.dart';
 
 void main() {
   runApp(MyApp());
@@ -53,15 +52,10 @@ class _MyAppState extends State<MyApp> {
               settings: settings,
               pageBuilder: (context, _, __) => RegistrerScreen(),
             );
-          case RentCarRoutes.HOME_SCREEN:
-            return this._slideTransition(
-              settings: settings,
-              pageBuilder: (context, _, __) => HomeScreen(),
-            );
           case RentCarRoutes.CARS_SCREEN:
             return this._fadeTransition(
               settings: settings,
-              pageBuilder: (context, _, __) => CarsScreen(),
+              pageBuilder: (context, _, __) => ListScreen(),
             );
           default:
             throw Exception('Ruta Invalida');
@@ -115,6 +109,7 @@ class _MyAppState extends State<MyApp> {
           );
         },
       );
+
 /*
   PageRouteBuilder _modalTransition({
     @required RouteSettings settings,

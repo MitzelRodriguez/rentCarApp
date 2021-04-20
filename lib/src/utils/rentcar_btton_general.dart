@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rent_car_app/utils/rentcar_colors.dart';
+
+//SCREEN
+import 'package:rent_car_app/src/utils/rentcar_colors.dart';
 
 class RentCarBttonGeneral extends StatelessWidget {
   final Function onTap;

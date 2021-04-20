@@ -1,18 +1,19 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:rent_car_app/utils/rentcar_btton_general.dart';
-import 'package:rent_car_app/utils/rentcar_colors.dart';
-import 'package:rent_car_app/utils/rentcar_rutes.dart';
-import 'package:rent_car_app/utils/rentcar_textField_general.dart';
 
-class RegistrerScreen extends StatefulWidget {
+//UTILS
+import 'package:rent_car_app/src/utils/rentcar_btton_general.dart';
+import 'package:rent_car_app/src/utils/rentcar_colors.dart';
+import 'package:rent_car_app/src/utils/rentcar_rutes.dart';
+import 'package:rent_car_app/src/utils/rentcar_textField_general.dart';
+
+class LoginScreen extends StatefulWidget {
   @override
-  _RegistrerScreenState createState() => _RegistrerScreenState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _RegistrerScreenState extends State<RegistrerScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   //Controllers
-  final _firstNameController = TextEditingController();
-  final _secondNameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passController = TextEditingController();
 
@@ -21,7 +22,6 @@ class _RegistrerScreenState extends State<RegistrerScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
     return Scaffold(
       body: SafeArea(
         child: LayoutBuilder(
@@ -37,13 +37,13 @@ class _RegistrerScreenState extends State<RegistrerScreen> {
                       Container(
                         height: size.height * 0.3,
                         decoration: BoxDecoration(
-                          gradient: RentcarColors.VERTICAL_GRADIENT,
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.elliptical(250, 70),
-                          ),
-                        ),
+                            gradient: RentcarColors.VERTICAL_GRADIENT,
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.elliptical(250, 70),
+                            )),
                         child: this._buildLogo(),
                       ),
+                      this._buildSpace(),
                       this._buildForm(),
                     ],
                   ),
@@ -71,73 +71,49 @@ class _RegistrerScreenState extends State<RegistrerScreen> {
             left: 20,
             right: 20,
             top: 20,
-            bottom: 40,
           ),
           child: Form(
             key: this._formGlobalKey,
             child: Column(
               children: [
-                this._buildFirstName(),
-                this._buildSpace(),
-                this._buildSecondName(),
-                this._buildSpace(),
                 this._buildInputEmail(),
                 this._buildSpace(),
                 this._buildInputPassword(),
                 this._buildSpace(),
                 this._buildSpace(),
-                this._buildEnterButton(),
-                this._buildSpace(),
                 this._buildTextLink(
-                  title: 'Ya tengo Cuenta',
-                  onTap: () {
-                    Navigator.pushNamed(
-                      context,
-                      RentCarRoutes.LOGIN_SCREEN,
-                    );
-                  },
+                  title: 'Olvidaste tu password?',
+                  onTap: () {},
                   style: TextStyle(
                     fontSize: 17.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(
-                  height: 30,
+                this._buildSpace(),
+                this._buildTextLink(
+                  title: 'Crear Cuenta',
+                  style: TextStyle(
+                    fontSize: 17.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      RentCarRoutes.REGISTRER_SCREEN,
+                    );
+                  },
                 ),
+                this._buildSpace(),
+                this._buildSpace(),
+                this._buildEnterButton(),
               ],
             ),
           ),
         ),
       );
 
-  Widget _buildSpace() => const SizedBox(
-        height: 20,
-      );
-
-  Widget _buildFirstName() => RentCarTextFieldGeneral(
-        textController: _firstNameController,
-        hintText: 'Ingresa tu Nombre o Nombres',
-        labelText: 'Nombre',
-        prefixIcon: Icon(
-          Icons.account_circle,
-          color: Colors.blueAccent,
-        ),
-        validator: null,
-      );
-
-  Widget _buildSecondName() => RentCarTextFieldGeneral(
-        textController: _secondNameController,
-        hintText: 'Ingresa tus apellidos',
-        labelText: 'Apellidos',
-        prefixIcon: Icon(
-          Icons.account_circle,
-          color: Colors.blueAccent,
-        ),
-        validator: null,
-      );
-
   Widget _buildInputEmail() => RentCarTextFieldGeneral(
-        textController: _emailController,
+        textController: this._emailController,
         hintText: 'Ingresa tu email',
         labelText: 'Email',
         prefixIcon: Icon(
@@ -148,14 +124,25 @@ class _RegistrerScreenState extends State<RegistrerScreen> {
       );
 
   Widget _buildInputPassword() => RentCarTextFieldGeneral(
-        textController: _passController,
-        hintText: 'Ingresa tu password',
+        textController: this._passController,
+        hintText: 'Ingresa tu Password',
         labelText: 'Password',
         prefixIcon: Icon(
           Icons.lock_rounded,
           color: Colors.blueAccent,
         ),
         validator: null,
+      );
+
+  Widget _buildEnterButton() => RentCarBttonGeneral(
+        onTap: () {
+          Navigator.pushNamed(context, RentCarRoutes.HOME_SCREEN);
+        },
+        title: 'Iniciar Sesion',
+      );
+
+  Widget _buildSpace() => const SizedBox(
+        height: 20.0,
       );
 
   Widget _buildTextLink({
@@ -180,10 +167,5 @@ class _RegistrerScreenState extends State<RegistrerScreen> {
             style: style,
           ),
         ),
-      );
-
-  Widget _buildEnterButton() => RentCarBttonGeneral(
-        onTap: () {},
-        title: 'Registrarme',
       );
 }

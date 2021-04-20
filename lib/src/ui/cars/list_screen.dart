@@ -1,6 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:rent_car_app/src/models/list_details.dart';
 
-class HomeScreen extends StatelessWidget {
+class ListScreen extends StatefulWidget {
+  @override
+  _ListScreenState createState() => _ListScreenState();
+}
+
+class _ListScreenState extends State<ListScreen> {
+  PageController _controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: PageView.builder(
+        scrollDirection: Axis.vertical,
+        controller: _controller,
+        itemCount: cars.length,
+        itemBuilder: (context, index) {
+          double currentPage = 0;
+
+          try {
+            currentPage = _controller.page;
+          } catch (_) {}
+
+          final resizeFactor =
+              (1 - (((currentPage - index).abs() * 0.3).clamp(0.0, 1.0)));
+
+          final currentCar = cars[index];
+
+          return Container();
+        },
+      ),
+    );
+  }
+}
+
+/*
+class CarsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -99,3 +135,4 @@ class HomeScreen extends StatelessWidget {
         ),
       );
 }
+*/
